@@ -1,0 +1,15 @@
+
+if [ ! -d /music/$2 ]; then
+	mkdir music/$2
+fi
+
+if [ ! -d /music/$2 ]; then
+	mkdir music/$2/pending
+fi
+
+cd music/$2/pending
+
+youtube-dl -x --audio-format "mp3" -o "%(title)s.%(ext)s" $1
+
+touch *.mp3
+mv *.mp3 ../
