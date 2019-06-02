@@ -5,4 +5,7 @@ module.exports = function(app){
 	app.route('/get_video')
 		.get(ytdl.get_video)
 
+	app.route('/get_all_videos')
+		.get(ytdl.get_all_videos)
+
 };

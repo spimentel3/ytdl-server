@@ -22,3 +22,21 @@ exports.get_video = function(req, res) {
 
 	res.jsonp(response);
 };
+
+exports.get_all_videos = function(req, res) {
+
+	const user = req.query.user;
+
+	const {stdout, stderr, code} = shell.exec('api/gm_script ' + user);
+
+	const songs = stdout.split(/[\r\n]+/);
+
+
+	var response = {
+		url: "http://35.196.94.8:3000/",
+		user: user,
+		songs: songs
+	}
+
+	res.jsonp(response);
+};
